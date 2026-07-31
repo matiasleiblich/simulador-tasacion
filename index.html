@@ -2,310 +2,289 @@
 <html lang="es-AR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pre-tasación · Ingenieros Inmobiliarios</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title id="page-title">Informe de pre-tasación · Matías Leiblich</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-:root{--navy:#0B1F3A;--navy2:#132C50;--gold:#C9A84C;--gl:#E8C97A;--gf:#FBF5E6;--mu:#5A6B80;--bg:#F4F6F9;--wh:#fff;--ln:#E2EAF0;--gr:#1E9E6E;--rd:#C0392B;--wb:#FEF9EC;--wbr:#E8C97A}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--navy);line-height:1.55;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:'DM Sans',sans-serif}
-.wrap{max-width:680px;margin:0 auto;padding:24px 16px 60px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#f5f4f0;color:#0b0b0b;font-size:13px;line-height:1.6;-webkit-font-smoothing:antialiased}
 
-/* Secciones */
-.sec{background:var(--wh);border:1px solid var(--ln);border-radius:16px;padding:28px 32px;margin-bottom:12px;overflow:hidden}
-.sec-navy{background:linear-gradient(155deg,var(--navy) 0%,#0d2744 60%,var(--navy2) 100%);border-radius:16px;padding:28px 32px;margin-bottom:12px;position:relative;overflow:hidden}
-.sec-navy::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:radial-gradient(circle,rgba(201,168,76,.12) 0%,transparent 70%);pointer-events:none}
-.eyebrow{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.section-title{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:6px;letter-spacing:-.02em}
-.section-sub{font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:20px}
+/* HEADER */
+.header{background:#0d1b2e;color:#fff;padding:36px 56px 32px;display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+.header-logo{height:36px;display:block;margin-bottom:20px}
+.eyebrow{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#6b9fff;margin-bottom:10px;font-weight:500}
+.header h1{font-size:28px;font-weight:300;color:#f0f1f3;line-height:1.2;margin-bottom:6px}
+.header h1 strong{font-weight:700;color:#fff}
+.header-sub{font-size:12px;color:#6b7280;margin-top:4px}
+.header-right{text-align:right;font-size:12px;color:#6b7280;line-height:1.9;flex-shrink:0;padding-top:4px}
+.header-right strong{display:block;color:#f0f1f3;font-size:13px;font-weight:600}
+.header-right a{color:#C9A84C;text-decoration:none;font-size:11px}
 
-/* Portada */
-.portada-grid{display:grid;grid-template-columns:110px 1fr 88px;gap:20px;align-items:center}
-.foto{width:110px;height:165px;border-radius:12px;object-fit:cover;display:block}
-.contact-links a{display:block;font-size:11.5px;font-weight:600;color:var(--gold);text-decoration:none;margin-bottom:4px}
-.qr-wrap{text-align:center}
-.qr-wrap p{font-size:8px;color:rgba(255,255,255,.35);margin-top:5px;letter-spacing:.03em}
+/* SECTIONS */
+.section{padding:32px 56px;border-bottom:1px solid #e1e0d9}
+.section-blanca{background:#fff}
+.sec-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px}
+.sec-num{font-size:11px;font-weight:600;letter-spacing:2px;color:#1a7aff;background:#1a7aff11;padding:4px 10px;border-radius:20px;white-space:nowrap;margin-top:2px;border:1px solid #1a7aff22}
+.sec-titulo{font-size:18px;font-weight:300;color:#0b0b0b;line-height:1.25}
+.sec-titulo strong{font-weight:700}
+.sec-desc{font-size:12px;color:#52514e;margin-top:4px;line-height:1.5}
 
-/* Métricas mercado */
-.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.metric-card{background:var(--bg);border:1px solid var(--ln);border-radius:10px;padding:14px;text-align:center}
-.metric-num{font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800;color:var(--navy);letter-spacing:-.03em}
-.metric-label{font-size:10px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
-.ratio-card{background:var(--navy);border-radius:10px;padding:18px;text-align:center;margin-bottom:16px}
-.ratio-num{font-family:'DM Sans',sans-serif;font-size:46px;font-weight:800;color:var(--gold);letter-spacing:-.04em;line-height:1}
-.ventas-card{background:var(--wb);border:1px solid var(--wbr);border-left:4px solid var(--gold);border-radius:10px;padding:14px 18px}
+/* DATOS PROPIEDAD */
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:.5px solid #e1e0d9;border-radius:10px;overflow:hidden}
+.prop-item{padding:12px 18px;border-bottom:.5px solid #e1e0d9;border-right:.5px solid #e1e0d9}
+.prop-item:nth-child(even){border-right:none}
+.prop-label{font-size:10px;color:#898781;text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px}
+.prop-val{font-size:13px;font-weight:600;color:#0b0b0b}
+.prop-group{font-size:10px;font-weight:700;color:#1a7aff;letter-spacing:1.5px;text-transform:uppercase;padding:10px 18px 6px;background:#f5f4f0;border-bottom:.5px solid #e1e0d9;grid-column:1/-1}
 
-/* Tabla propiedad */
-.prop-table{width:100%;border-collapse:collapse;font-size:13px}
-.prop-table .group-header td{background:var(--bg);padding:9px 14px;font-size:9.5px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--ln);border-top:1px solid var(--ln)}
-.prop-table tr:not(.group-header) td{padding:9px 14px;border-bottom:1px solid var(--ln)}
-.prop-table tr:not(.group-header) td:first-child{color:var(--mu);width:48%}
-.prop-table tr:not(.group-header) td:last-child{font-weight:600;color:var(--navy)}
-.prop-table tr:nth-child(even):not(.group-header){background:#FAFBFC}
+/* STATS MERCADO */
+.mercado-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.mstat{background:#fff;border:.5px solid #e1e0d9;border-radius:10px;padding:16px 18px}
+.mstat-num{font-size:24px;font-weight:700;color:#0b0b0b;margin-bottom:2px}
+.mstat-sub{font-size:11px;font-weight:500;color:#52514e;margin-top:3px}
+.mstat-label{font-size:10px;color:#898781;text-transform:uppercase;letter-spacing:.7px;line-height:1.4;margin-top:4px}
+.mstat-hl .mstat-num{color:#1a7aff}
+.chart-card{background:#fff;border:.5px solid #e1e0d9;border-radius:8px;padding:16px 18px}
+.chart-eyebrow{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#898781;margin-bottom:6px}
+.chart-title{font-size:12px;font-weight:600;color:#0b0b0b;margin-bottom:14px}
+.chart-wrap{position:relative;height:180px}
 
-/* Precios */
-.prices-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:16px}
-.price-card{border-radius:10px;padding:14px 10px;text-align:center}
-.price-card.regular{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
-.price-card.highlight{background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.4)}
-.price-label{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;line-height:1.4;margin-bottom:6px}
-.price-label.regular{color:rgba(255,255,255,.4)}
-.price-label.highlight{color:var(--gold)}
-.price-val{font-family:'DM Sans',sans-serif;font-size:17px;font-weight:800}
-.price-val.regular{color:rgba(255,255,255,.7)}
-.price-val.highlight{color:var(--gl)}
+/* VALOR ESTIMADO */
+.valor-box{background:#0d1b2e;border-radius:12px;padding:32px 40px;text-align:center;color:#fff}
+.valor-eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#6b9fff;margin-bottom:16px;font-weight:500}
+.valor-rango{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.valor-entre{font-size:16px;font-weight:400;color:rgba(255,255,255,.5)}
+.valor-min{font-size:28px;font-weight:700;color:rgba(255,255,255,.8)}
+.valor-y{font-size:16px;color:rgba(255,255,255,.3)}
+.valor-max{font-size:36px;font-weight:700;color:#C9A84C}
+.valor-disclaimer{font-size:11px;color:rgba(255,255,255,.4);margin-top:12px;line-height:1.6;max-width:480px;margin-left:auto;margin-right:auto}
 
-/* Disclaimer */
-.disclaimer{background:var(--wb);border:1px solid var(--wbr);border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px;font-size:11.5px;color:#7A6020;line-height:1.6}
-.pillar{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
-.pillar-num{width:22px;height:22px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--navy);flex-shrink:0;margin-top:1px}
-.highlight-box{background:var(--navy);border-radius:10px;padding:16px 20px}
+/* METODOLOGIA */
+.metod-text{font-size:13px;color:#52514e;line-height:1.75;margin-bottom:14px}
+.metod-pillars{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.pillar{display:flex;align-items:flex-start;gap:12px}
+.pillar-num{width:24px;height:24px;background:#1a7aff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;margin-top:1px}
+.pillar-txt{font-size:13px;color:#52514e;line-height:1.6}
+.highlight-box{background:#0d1b2e;border-radius:10px;padding:18px 22px;margin-top:20px}
+.highlight-box p{font-size:13px;color:rgba(255,255,255,.75);line-height:1.75}
+.highlight-box strong{color:#C9A84C}
 
 /* CTA */
-.btn-wa{display:flex;align-items:center;justify-content:center;gap:9px;background:#fff;color:var(--navy);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:13px 24px;border-radius:999px;border:2px solid #25D366;text-decoration:none;width:100%;margin-bottom:10px;transition:all .15s}
-.btn-wa:hover{background:#F0FDF4}
-.btn-secondary-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
-.btn-sec{display:flex;align-items:center;justify-content:center;padding:11px;border:1.5px solid var(--navy);border-radius:999px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;color:var(--navy);text-decoration:none;background:#fff;transition:all .15s}
-.btn-sec:hover{background:var(--bg)}
-.firma{display:flex;align-items:center;gap:12px;margin-bottom:20px}
-.firma-bar{width:4px;height:40px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.cta-box{background:linear-gradient(135deg,#1a3a6b 0%,#0d1b2e 100%);border-radius:14px;padding:32px 36px;color:#fff;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(201,168,76,.15) 0%,transparent 70%);pointer-events:none}
+.cta-eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin-bottom:10px;font-weight:600}
+.cta-box h3{font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
+.cta-box p{font-size:13px;color:rgba(255,255,255,.7);line-height:1.7;max-width:500px;margin-bottom:24px}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:13px 26px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px}
+.btn-wa:hover{background:#22c55e}
+.firma{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1)}
+.firma-bar{width:3px;height:36px;background:#C9A84C;border-radius:2px;flex-shrink:0}
+.firma-name{font-size:13px;font-weight:700;color:#fff}
+.firma-role{font-size:11px;color:rgba(255,255,255,.5)}
+.firma-contact a{font-size:11px;color:#C9A84C;text-decoration:none}
 
-/* Herramientas */
-.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.tool-card{display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--wh);border:1px solid var(--ln);border-top:3px solid var(--gold);border-radius:14px;text-decoration:none;color:var(--navy);transition:box-shadow .15s}
-.tool-card:hover{box-shadow:0 4px 16px rgba(11,31,58,.1)}
-.tool-icon{width:38px;height:38px;background:#EEF3FA;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px}
-.tool-title{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;margin-bottom:3px}
-.tool-desc{font-size:11.5px;color:var(--mu);line-height:1.45;margin-bottom:8px}
-.tool-link{font-size:12px;font-weight:700;color:var(--navy)}
-.btn-home{display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;background:var(--wh);border:1px solid var(--ln);border-radius:10px;text-decoration:none;color:var(--mu);font-size:12.5px;font-weight:600}
+/* FOOTER */
+footer{padding:16px 56px;display:flex;justify-content:flex-end;align-items:center;border-top:.5px solid #e1e0d9}
+.footer-link{font-size:11px;color:#C9A84C;text-decoration:none;font-weight:400;opacity:.7}
+.footer-link:hover{opacity:1}
 
-/* Footer */
-.footer{background:var(--bg);border-radius:12px;padding:14px 20px;margin-top:12px}
-.footer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.legal{font-size:9.5px;color:#8A9BB0;line-height:1.6}
-
-/* Print */
-@media print{body{background:#fff}.wrap{padding:0}}
-@media(max-width:520px){
-  .portada-grid{grid-template-columns:80px 1fr;}
-  .qr-wrap{display:none}
-  .metrics{grid-template-columns:1fr 1fr}
-  .prices-grid{grid-template-columns:1fr}
-  .btn-secondary-row{grid-template-columns:1fr}
-  .tools-grid{grid-template-columns:1fr}
-  .sec,.sec-navy{padding:20px 18px}
+@media(max-width:640px){
+  .header{padding:24px;flex-direction:column}
+  .header-right{text-align:left}
+  .section{padding:24px}
+  .mercado-stats{grid-template-columns:1fr 1fr}
+  .prop-grid{grid-template-columns:1fr}
+  .prop-item:nth-child(even){border-right:.5px solid #e1e0d9}
+  footer{padding:16px 24px}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<!-- ═══ S1 — PORTADA ═══ -->
-<div class="sec-navy">
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
-    <img src="IMG/Logo IN2.png" width="180" alt="Ingenieros Inmobiliarios" style="display:block">
-    <div style="text-align:right">
-      <div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)">Pre-tasación · CABA</div>
-      <div id="fecha" style="font-size:10px;color:rgba(255,255,255,.35);margin-top:2px"></div>
-    </div>
+<!-- HEADER -->
+<header class="header">
+  <div>
+    <img src="IMG/logoml.png" alt="Matías Leiblich" class="header-logo" onerror="this.style.display='none'">
+    <div class="eyebrow">Informe de pre-tasación · CABA</div>
+    <h1><strong id="h-barrio">—</strong><br><span id="h-dir" style="font-weight:300;font-size:22px">—</span></h1>
+    <div class="header-sub" id="h-sub">—</div>
   </div>
-  <div class="portada-grid">
-    <img src="IMG/Fotoportada.jpg" class="foto" alt="Matías Leiblich">
+  <div class="header-right">
+    <strong>Matías Leiblich</strong>
+    Ingeniería · Real Estate<br>
+    <a href="https://wa.me/5491161737552">11-6173-7552</a><br>
+    <a href="mailto:tasaciones@matiasleiblich.com">tasaciones@matiasleiblich.com</a><br>
+    <a href="https://www.linkedin.com/in/matias-leiblich" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</header>
+
+<!-- 01: DATOS DE LA PROPIEDAD -->
+<section class="section section-blanca">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
     <div>
-      <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Informe de pre-tasación</div>
-      <h1 style="font-size:22px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:8px;letter-spacing:-.02em">¿Cuánto vale<br>tu propiedad?</h1>
-      <p style="font-size:11px;color:rgba(255,255,255,.45);margin-bottom:16px;line-height:1.5">Basado en precios reales de cierre por zona</p>
-      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px">Matías Leiblich</div>
-      <div style="font-size:10.5px;color:rgba(255,255,255,.45);margin-bottom:12px">Ingeniero Civil · Asesor comercial</div>
-      <div class="contact-links">
-        <a href="https://wa.me/5491161737552" target="_blank" rel="noopener">📱 11-6173-7552</a>
-        <a href="mailto:matiasleiblich@deinmobiliarios.com" target="_blank" rel="noopener">✉️ matiasleiblich@deinmobiliarios.com</a>
-        <a href="https://www.instagram.com/tutemudas" target="_blank" rel="noopener">📸 @tutemudas</a>
-        <a href="https://www.linkedin.com/in/matias-leiblich" target="_blank" rel="noopener">💼 linkedin.com/in/matias-leiblich</a>
-      </div>
-    </div>
-    <div class="qr-wrap">
-      <img src="IMG/MiQR.png" width="90" height="76" alt="QR" style="display:block;margin:0 auto">
-      <p>matiasleiblich.com</p>
+      <div class="sec-titulo"><strong>Datos de tu propiedad</strong></div>
+      <div class="sec-desc">Los datos declarados utilizados para calcular el valor de referencia.</div>
     </div>
   </div>
-  <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08)">
-    <p style="font-size:10px;color:rgba(255,255,255,.3);line-height:1.6">⚠️ Este informe es una <strong style="color:rgba(255,255,255,.45)">estimación de referencia</strong>. El valor real requiere una visita presencial y el análisis de factores que no pueden evaluarse a distancia.</p>
+  <div class="prop-grid">
+    <div class="prop-group">Ubicación</div>
+    <div class="prop-item"><div class="prop-label">Barrio / zona</div><div class="prop-val" id="d-barrio">—</div></div>
+    <div class="prop-item"><div class="prop-label">Dirección</div><div class="prop-val" id="d-dir">—</div></div>
+    <div class="prop-group">Superficie</div>
+    <div class="prop-item"><div class="prop-label">Cubierta</div><div class="prop-val" id="d-m2cub">—</div></div>
+    <div class="prop-item"><div class="prop-label">Balcón / semicubierto</div><div class="prop-val" id="d-m2semi">—</div></div>
+    <div class="prop-item"><div class="prop-label">Descubierto</div><div class="prop-val" id="d-m2desc">—</div></div>
+    <div class="prop-item"><div class="prop-label">Ambientes</div><div class="prop-val" id="d-amb">—</div></div>
+    <div class="prop-group">Características</div>
+    <div class="prop-item"><div class="prop-label">Piso</div><div class="prop-val" id="d-piso">—</div></div>
+    <div class="prop-item"><div class="prop-label">Ascensor</div><div class="prop-val" id="d-asc">—</div></div>
+    <div class="prop-item"><div class="prop-label">Orientación</div><div class="prop-val" id="d-ori">—</div></div>
+    <div class="prop-item"><div class="prop-label">Disposición</div><div class="prop-val" id="d-dis">—</div></div>
+    <div class="prop-item"><div class="prop-label">Estado</div><div class="prop-val" id="d-estado">—</div></div>
+    <div class="prop-item"><div class="prop-label">Antigüedad</div><div class="prop-val" id="d-ant">—</div></div>
+    <div class="prop-group">Adicionales</div>
+    <div class="prop-item"><div class="prop-label">Cochera</div><div class="prop-val" id="d-coch">—</div></div>
+    <div class="prop-item"><div class="prop-label">Baulera</div><div class="prop-val" id="d-baul">—</div></div>
+    <div class="prop-item"><div class="prop-label">Expensas</div><div class="prop-val" id="d-exp">—</div></div>
+    <div class="prop-item"><div class="prop-label">Amenities</div><div class="prop-val" id="d-am">—</div></div>
   </div>
-</div>
+</section>
 
-<!-- ═══ S2 — MERCADO HOY ═══ -->
-<div class="sec">
-  <div class="eyebrow">Contexto</div>
-  <h2 class="section-title">El mercado hoy</h2>
-  <p class="section-sub">Antes de hablar de precios, es importante entender el mercado en el que tu propiedad va a competir.</p>
-  <div class="metrics">
-    <div class="metric-card"><div class="metric-num">113.000</div><div class="metric-label">Propiedades en venta</div></div>
-    <div class="metric-card"><div class="metric-num">5.435</div><div class="metric-label">Propiedades vendidas</div></div>
-  </div>
-  <p style="font-size:10.5px;color:var(--mu);text-align:center;font-style:italic;margin-bottom:16px">Mayo 2026 · Fuente: Zonaprop / Colegio de Escribanos CABA</p>
-  <div class="ratio-card">
-    <p style="font-size:10px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">Hoy se vende solo el</p>
-    <div class="ratio-num">4,8%</div>
-    <p style="font-size:12px;color:rgba(255,255,255,.55);margin-top:5px">de lo publicado</p>
-  </div>
-  <div class="ventas-card">
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
-      <div>
-        <div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:800;color:var(--navy);margin-bottom:3px">21 avisos → 1 venta</div>
-        <div style="font-size:12px;color:var(--mu);line-height:1.5">Tu propiedad solo se va a vender si está en precio <strong style="color:var(--navy)">y tiene una buena comercialización.</strong></div>
-      </div>
-      <div style="font-size:11px;font-weight:600;color:#7A6020;text-align:right;line-height:1.5">Lo que importa son<br><span style="color:var(--navy);font-weight:700">los precios de cierre.</span></div>
+<!-- 02: EL MERCADO HOY -->
+<section class="section">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <div>
+      <div class="sec-titulo"><strong>El mercado</strong> hoy</div>
+      <div class="sec-desc">Contexto para entender en qué condiciones va a competir tu propiedad.</div>
     </div>
   </div>
-</div>
-
-<!-- ═══ S3 — GRÁFICOS ═══ -->
-<div class="sec">
-  <div class="eyebrow">Análisis</div>
-  <h2 class="section-title">Contexto de mercado · CABA</h2>
-  <p class="section-sub">Evolución de precios de publicación, precios de cierre y crédito hipotecario.</p>
-  <img src="IMG/graficos.jpg" style="width:100%;border-radius:10px;border:1px solid var(--ln);display:block" alt="Gráficos de mercado CABA">
-</div>
-
-<!-- ═══ S4 — DATOS DE LA PROPIEDAD ═══ -->
-<div class="sec">
-  <div class="eyebrow">Tu inmueble</div>
-  <h2 class="section-title">Datos de tu propiedad</h2>
-  <p class="section-sub">Los datos utilizados para calcular el valor de referencia.</p>
-  <div style="border:1px solid var(--ln);border-radius:10px;overflow:hidden">
-    <table class="prop-table" width="100%">
-      <tr class="group-header"><td colspan="2">Ubicación y tipo</td></tr>
-      <tr><td>Tipo de propiedad</td><td id="d-tipo">—</td></tr>
-      <tr><td>Barrio / zona</td><td id="d-barrio">—</td></tr>
-      <tr><td>Dirección</td><td id="d-dir">—</td></tr>
-      <tr class="group-header"><td colspan="2">Superficie</td></tr>
-      <tr><td>Cubierta</td><td id="d-m2cub">—</td></tr>
-      <tr><td>Balcón / semicubierto</td><td id="d-m2semi">—</td></tr>
-      <tr><td>Descubierto</td><td id="d-m2desc">—</td></tr>
-      <tr><td>Ambientes</td><td id="d-amb">—</td></tr>
-      <tr class="group-header"><td colspan="2">Características</td></tr>
-      <tr><td>Piso</td><td id="d-piso">—</td></tr>
-      <tr><td>Ascensor</td><td id="d-asc">—</td></tr>
-      <tr><td>Orientación</td><td id="d-ori">—</td></tr>
-      <tr><td>Disposición</td><td id="d-dis">—</td></tr>
-      <tr><td>Estado de la unidad</td><td id="d-estado">—</td></tr>
-      <tr><td>Antigüedad</td><td id="d-ant">—</td></tr>
-      <tr class="group-header"><td colspan="2">Adicionales</td></tr>
-      <tr><td>Cochera</td><td id="d-coch">—</td></tr>
-      <tr><td>Baulera</td><td id="d-baul">—</td></tr>
-      <tr><td>Expensas</td><td id="d-exp">—</td></tr>
-      <tr><td>Amenities</td><td id="d-am">—</td></tr>
-      <tr><td>Entorno especial</td><td id="d-vec">—</td></tr>
-    </table>
-  </div>
-</div>
-
-<!-- ═══ S5 — LOS 3 PRECIOS ═══ -->
-<div class="sec-navy">
-  <div class="eyebrow">Estimación</div>
-  <h2 style="font-size:18px;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-.02em">¿Cuánto vale tu propiedad?</h2>
-  <p style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:20px;line-height:1.55">Basándonos en los datos que cargaste, estimamos los siguientes valores de referencia para tu <span id="d-tipo2">propiedad</span> en <strong id="d-barrio2" style="color:var(--gl)">—</strong>.</p>
-  <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:24px;margin-bottom:16px;text-align:center">
-    <p style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px">Valor estimado de tu propiedad</p>
-    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
-      <p style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;color:rgba(255,255,255,.5);margin:0">Entre</p>
-      <div style="font-family:'DM Sans',sans-serif;font-size:26px;font-weight:800;color:rgba(255,255,255,.75)" id="d-min">—</div>
-      <p style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;color:rgba(255,255,255,.4);margin:0">y</p>
-      <div style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;color:var(--gl)" id="d-max">—</div>
+  <div class="mercado-stats">
+    <div class="mstat">
+      <div class="mstat-num">111.250</div>
+      <div class="mstat-label">Avisos publicados hoy en CABA</div>
+    </div>
+    <div class="mstat">
+      <div class="mstat-num">5.435</div>
+      <div class="mstat-label">Promedio escrituras por mes</div>
+      <div class="mstat-sub">Total 12 meses: 65.219</div>
+    </div>
+    <div class="mstat mstat-hl">
+      <div class="mstat-num">4,9%</div>
+      <div class="mstat-label">Tasa de cierre</div>
+      <div class="mstat-sub">se vende el 4,9% de lo publicado</div>
+    </div>
+    <div class="mstat">
+      <div class="mstat-num">1 cada 20</div>
+      <div class="mstat-label">Avisos por operación</div>
+      <div class="mstat-sub">se vende 1 de cada 20 avisos</div>
     </div>
   </div>
-  <p style="font-size:10.5px;color:rgba(255,255,255,.35);line-height:1.65;text-align:center">⚠️ Valores orientativos basados en precios de cierre por barrio y las características declaradas del inmueble. No contempla zonas dentro del mismo barrio.</p>
-</div>
-
-<!-- ═══ S6 — SOBRE ESTA ESTIMACIÓN ═══ -->
-<div class="sec">
-  <div class="eyebrow">Metodología</div>
-  <h2 class="section-title">Sobre esta estimación</h2>
-  <p style="font-size:13px;color:#3D4F63;line-height:1.75;margin-bottom:12px">El valor informado constituye una <strong>pretasación orientativa</strong>, elaborada mediante un modelo de valuación asistido por datos de mercado, que combina la información brindada por usted con el análisis de operaciones de cierre registradas en la zona.</p>
-  <p style="font-size:13px;color:#3D4F63;line-height:1.75;margin-bottom:12px">Esta estimación tiene como objetivo ofrecer una primera referencia confiable del valor de mercado. Sin embargo, <strong>no reemplaza una tasación profesional presencial</strong>, ya que existen numerosos factores que solo pueden evaluarse recorriendo el inmueble.</p>
-  <p style="font-size:13px;color:#3D4F63;line-height:1.75;margin-bottom:16px">Aspectos como la calidad constructiva, el estado real de conservación, la luminosidad, las vistas, la distribución, las terminaciones y otros atributos particulares pueden influir significativamente en el valor.</p>
-  <div style="background:var(--bg);border:1px solid var(--ln);border-radius:10px;padding:14px 18px;margin-bottom:14px">
-    <p style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:12px">Una tasación profesional se basa en tres pilares:</p>
-    <div class="pillar"><div class="pillar-num">1</div><p style="font-size:12px;color:#3D4F63">La visita e inspección presencial del inmueble.</p></div>
-    <div class="pillar"><div class="pillar-num">2</div><p style="font-size:12px;color:#3D4F63">El análisis de propiedades comparables efectivamente vendidas.</p></div>
-    <div class="pillar" style="margin-bottom:0"><div class="pillar-num">3</div><p style="font-size:12px;color:#3D4F63">El estudio de las propiedades actualmente en comercialización que compiten dentro del mismo segmento.</p></div>
+  <div class="chart-card">
+    <div class="chart-eyebrow">Escrituras realizadas · CABA</div>
+    <div class="chart-title">Operaciones escrituradas y con hipoteca por mes</div>
+    <div class="chart-wrap"><canvas id="cEscr"></canvas></div>
   </div>
+  <div style="font-size:11px;color:#898781;margin-top:8px;font-style:italic">
+    Fuente: Colegio de Escribanos CABA · Los valores de publicación no reflejan la realidad — <strong style="color:#0b0b0b">lo que importa son los precios de cierre</strong>.
+  </div>
+</section>
+
+<!-- 03: VALOR ESTIMADO -->
+<section class="section section-blanca">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <div>
+      <div class="sec-titulo"><strong>Valor estimado</strong> de tu propiedad</div>
+      <div class="sec-desc">Calculado en base a precios de cierre reales del barrio y las características declaradas.</div>
+    </div>
+  </div>
+  <div class="valor-box">
+    <div class="valor-eyebrow">Rango de valor estimado</div>
+    <div class="valor-rango">
+      <span class="valor-entre">Entre</span>
+      <span class="valor-min" id="d-min">—</span>
+      <span class="valor-y">y</span>
+      <span class="valor-max" id="d-max">—</span>
+    </div>
+    <div class="valor-disclaimer">⚠️ Valores orientativos basados en precios de cierre por barrio y las características declaradas del inmueble. No contempla zonas dentro del mismo barrio.</div>
+  </div>
+</section>
+
+<!-- 04: SOBRE ESTA ESTIMACIÓN -->
+<section class="section">
+  <div class="sec-header">
+    <span class="sec-num">04</span>
+    <div>
+      <div class="sec-titulo"><strong>Sobre esta estimación</strong></div>
+      <div class="sec-desc">Qué significa este número y para qué sirve.</div>
+    </div>
+  </div>
+  <p class="metod-text">Este informe constituye una <strong>pre-tasación orientativa</strong>, elaborada mediante un modelo de valuación que combina los datos declarados con precios reales de cierre registrados en el barrio. Su objetivo es ofrecer una primera referencia confiable del valor de mercado.</p>
+  <p class="metod-text">No reemplaza una tasación profesional presencial, ya que existen factores que solo pueden evaluarse recorriendo el inmueble: calidad constructiva, estado real de conservación, luminosidad, vistas, terminaciones y distribución, entre otras características de la propiedad, el edificio y la zona.</p>
+
+  <p style="font-size:13px;font-weight:600;color:#0b0b0b;margin-bottom:14px">Una tasación profesional se basa en tres pilares:</p>
+  <div class="metod-pillars">
+    <div class="pillar"><div class="pillar-num">1</div><div class="pillar-txt">La visita e inspección presencial del inmueble.</div></div>
+    <div class="pillar"><div class="pillar-num">2</div><div class="pillar-txt">El análisis de propiedades comparables efectivamente vendidas.</div></div>
+    <div class="pillar"><div class="pillar-num">3</div><div class="pillar-txt">El estudio de las propiedades actualmente en comercialización que compiten dentro del mismo segmento.</div></div>
+  </div>
+
   <div class="highlight-box">
-    <p style="font-size:12px;color:rgba(255,255,255,.7);line-height:1.75">Una correcta tasación no solo puede representar una diferencia de <strong style="color:var(--gl)">miles de dólares</strong> en el resultado final, sino también una diferencia significativa en los <strong style="color:var(--gl)">tiempos de venta</strong>. Un inmueble correctamente valuado suele generar mayor interés y alcanzar su objetivo en plazos razonables.</p>
+    <p>Una correcta tasación no solo puede representar una diferencia de <strong>miles de dólares</strong> en el resultado final, sino también una diferencia significativa en los <strong>tiempos de venta</strong>. Un inmueble correctamente valuado suele generar mayor interés y alcanzar su objetivo en plazos razonables.</p>
   </div>
-</div>
+</section>
 
-<!-- ═══ S7 — CTA ═══ -->
-<div class="sec">
-  <div class="eyebrow">Próximo paso</div>
-  <h2 class="section-title">Tasación presencial gratuita</h2>
-  <p class="section-sub">Si querés conocer el valor real de tu propiedad y definir la estrategia de comercialización más adecuada, coordinemos una visita sin compromiso.</p>
-  <a class="btn-wa" id="wa-link" href="https://wa.me/5491161737552" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Coordinar visita por WhatsApp</a>
-  <div class="btn-secondary-row">
-    <a class="btn-sec" href="mailto:matiasleiblich@deinmobiliarios.com" target="_blank" rel="noopener">✉️ Escribir por email</a>
-    <a class="btn-sec" href="https://www.instagram.com/tutemudas" target="_blank" rel="noopener">📸 @tutemudas</a>
-  </div>
-  <div class="firma">
-    <div class="firma-bar"></div>
-    <div>
-      <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:var(--navy)">Matías Leiblich</div>
-      <div style="font-size:11px;color:var(--mu)">Ingeniero Civil · Asesor comercial · Ingenieros Inmobiliarios</div>
-      <div style="font-size:11px;color:var(--mu)"><a href="https://wa.me/5491161737552" style="color:var(--gold);text-decoration:none;font-weight:600" target="_blank" rel="noopener">11-6173-7552</a> · <a href="https://matiasleiblich.com" style="color:var(--gold);text-decoration:none;font-weight:600" target="_blank" rel="noopener">matiasleiblich.com</a></div>
+<!-- 05: CTA -->
+<section class="section">
+  <div class="cta-box">
+    <div class="cta-eyebrow">Próximo paso</div>
+    <h3>Tasación presencial</h3>
+    <p>Si querés conocer el valor real de tu propiedad y definir la estrategia de comercialización más adecuada, coordinemos una visita sin compromiso.</p>
+    <a class="btn-wa" id="wa-link" href="https://wa.me/5491161737552" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Coordinar por WhatsApp
+    </a>
+    <div class="firma">
+      <div class="firma-bar"></div>
+      <div>
+        <div class="firma-name">Matías Leiblich</div>
+        <div class="firma-role">Ingeniería · Real Estate</div>
+        <div class="firma-contact">
+          <a href="https://wa.me/5491161737552">11-6173-7552</a> ·
+          <a href="https://matiasleiblich.com">matiasleiblich.com</a>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="tools-grid">
-    <a href="https://matiasleiblich.com/calculadora-inmobiliaria" class="tool-card" target="_blank" rel="noopener">
-      <div class="tool-icon">🧮</div>
-      <div><div class="tool-title">Calculadora Inmobiliaria</div><div class="tool-desc">Calculá los gastos de compra en CABA y Provincia.</div><div class="tool-link">Abrir herramienta →</div></div>
-    </a>
-    <a href="https://matiasleiblich.com/cartera" class="tool-card" target="_blank" rel="noopener">
-      <div class="tool-icon">🏘️</div>
-      <div><div class="tool-title">Cartera de Propiedades</div><div class="tool-desc">Explorá las propiedades disponibles y vendidas.</div><div class="tool-link">Ver propiedades →</div></div>
-    </a>
-  </div>
-  <a href="https://matiasleiblich.com" class="btn-home" target="_blank" rel="noopener">🏠 Volver al inicio</a>
-</div>
+</section>
 
-<!-- Footer -->
-<div class="footer">
-  <div class="footer-top">
-    <img src="IMG/Logo IN2.png" width="130" alt="Ingenieros Inmobiliarios" style="display:block">
-    <a href="https://matiasleiblich.com" style="font-size:10.5px;color:var(--mu);text-decoration:none">matiasleiblich.com</a>
-  </div>
-  <p class="legal">Todas las operaciones inmobiliarias son objeto de intermediación y conclusión por parte de "Valentini Leandro Luis y Fernando Caro Fretes", CUCICBA 8821 / CPMCAL 606 / CUCICBA 8639, adherido a la red deinmobiliarios.</p>
-</div>
-
-</div><!-- /wrap -->
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-link" id="footer-link">¿Cómo vendemos en 4 meses? →</a>
+</footer>
 
 <script>
-// Lee parámetros de la URL y puebla el informe
-function gp(k) {
-  const u = new URLSearchParams(window.location.search);
-  return u.get(k) || '—';
-}
+function gp(k){return new URLSearchParams(window.location.search).get(k)||'—';}
 
-// Fecha de hoy
-document.getElementById('fecha').textContent = new Date().toLocaleDateString('es-AR', {day:'2-digit',month:'long',year:'numeric'});
+const barrio=gp('barrio'), sub=gp('sub'), dir=gp('dir');
+const barrioLabel = sub!=='—' ? barrio+' · '+sub : barrio;
+document.getElementById('h-barrio').textContent = barrioLabel;
+document.getElementById('h-dir').textContent = dir!=='—' ? dir : '';
+document.getElementById('h-sub').textContent = gp('amb')+' · '+gp('tipo');
+document.title = 'Pre-tasación · '+barrioLabel+' · Matías Leiblich';
 
-// Datos propiedad
-document.getElementById('d-tipo').textContent = gp('tipo');
-document.getElementById('d-tipo2').textContent = gp('tipo').toLowerCase();
-const barrio = gp('barrio');
-const sub = gp('sub');
-document.getElementById('d-barrio').textContent = sub !== '—' ? barrio + ' · ' + sub : barrio;
-document.getElementById('d-barrio2').textContent = sub !== '—' ? sub : barrio;
-document.getElementById('d-dir').textContent = gp('dir');
-document.getElementById('d-m2cub').textContent = gp('m2cub') + ' m²';
-document.getElementById('d-m2semi').textContent = gp('m2semi') + ' m²';
-document.getElementById('d-m2desc').textContent = gp('m2desc') + ' m²';
+document.getElementById('d-barrio').textContent = barrioLabel;
+document.getElementById('d-dir').textContent = dir;
+document.getElementById('d-m2cub').textContent = gp('m2cub')+' m²';
+document.getElementById('d-m2semi').textContent = gp('m2semi')+' m²';
+document.getElementById('d-m2desc').textContent = gp('m2desc')+' m²';
 document.getElementById('d-amb').textContent = gp('amb');
-document.getElementById('d-piso').textContent = gp('piso') + '° / ' + gp('pisos') + ' pisos';
+document.getElementById('d-piso').textContent = gp('piso')+'° / '+gp('pisos')+' pisos';
 document.getElementById('d-asc').textContent = gp('asc');
 document.getElementById('d-ori').textContent = gp('ori');
 document.getElementById('d-dis').textContent = gp('dis');
@@ -315,34 +294,35 @@ document.getElementById('d-coch').textContent = gp('coch');
 document.getElementById('d-baul').textContent = gp('baul');
 document.getElementById('d-exp').textContent = gp('exp');
 document.getElementById('d-am').textContent = gp('am');
-document.getElementById('d-vec').textContent = gp('vec');
 
-// Precios
-const cierreVal = gp('cierre');
-// Parse cierre value to calculate range
-const cierreNum = parseInt(cierreVal.replace(/[^0-9]/g,''));
+const cierreRaw=gp('cierre');
+const cierreNum=parseInt(cierreRaw.replace(/[^0-9]/g,''));
 function fmtUSD(n){return 'USD '+Math.round(n).toLocaleString('es-AR');}
-if(cierreNum && !isNaN(cierreNum)){
-  document.getElementById('d-min').textContent = fmtUSD(Math.round(cierreNum*0.95/1000)*1000);
-  document.getElementById('d-max').textContent = fmtUSD(Math.round(cierreNum*1.10/1000)*1000);
-} else {
-  document.getElementById('d-min').textContent = '—';
-  document.getElementById('d-max').textContent = '—';
+if(cierreNum&&!isNaN(cierreNum)){
+  document.getElementById('d-min').textContent=fmtUSD(Math.round(cierreNum*0.95/1000)*1000);
+  document.getElementById('d-max').textContent=fmtUSD(Math.round(cierreNum*1.10/1000)*1000);
 }
 
-// WhatsApp link personalizado
-const nom = gp('nombre');
-const tipo = gp('tipo').toLowerCase();
-const msg = encodeURIComponent(
-  'Hola ' + nom + '! 👋 Acabo de recibir tu pre-tasación.\n\n' +
-  'Tu ' + tipo + ' en *' + (sub !== '—' ? sub : barrio) + '* tiene los siguientes valores de referencia:\n\n' +
-  '📋 *Precios estimados:*\n' +
-  '• Cierre: ' + gp('cierre') + '\n' +
-  '• Publicación: ' + gp('pub') + '\n' +
-  '• Precio de prueba (15 días): ' + gp('prueba') + '\n\n' +
-  '⚠️ Son valores orientativos. Para el precio real coordinemos la visita presencial. ¿Cuándo te viene bien?'
-);
-document.getElementById('wa-link').href = 'https://wa.me/5491161737552?text=' + msg;
+const nom=gp('nombre');
+const msg=encodeURIComponent('Hola Matías! Acabo de recibir mi pre-tasación y me gustaría coordinar la visita presencial.');
+document.getElementById('wa-link').href='https://wa.me/5491161737552?text='+msg;
+
+// Chart
+const gc='#e1e0d9',tc='#52514e';
+const tip={backgroundColor:'#fff',borderColor:'#e1e0d9',borderWidth:1,titleColor:'#0b0b0b',bodyColor:'#52514e',padding:10};
+const escrLabels=["Jul '24","Ago '24","Sep '24","Oct '24","Nov '24","Dic '24","Ene '25","Feb '25","Mar '25","Abr '25","May '25","Jun '25","Jul '25","Ago '25","Sep '25","Oct '25","Nov '25","Dic '25","Ene '26","Feb '26","Mar '26","Abr '26","May '26","Jun '26"];
+const escrVals=[4946,5297,5157,5987,5755,7667,3645,4293,4747,5471,5610,5762,6651,6370,6998,7018,5250,7646,3423,3567,5590,5472,5435,5990];
+const hipVals=[225,416,705,944,950,1130,945,965,992,1192,1300,1216,1393,1338,1486,1501,737,888,765,592,834,609,587,765];
+new Chart(document.getElementById('cEscr'),{type:'bar',
+  data:{labels:escrLabels,datasets:[
+    {type:'bar',data:escrVals,borderRadius:3,borderSkipped:false,backgroundColor:'#1a7aff88',borderWidth:0,label:'Escrituras'},
+    {type:'line',data:hipVals,borderColor:'#e05a3a',backgroundColor:'#e05a3a22',borderWidth:2,pointRadius:2,pointBackgroundColor:'#e05a3a',tension:.3,label:'Con Hipoteca'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:true,labels:{color:tc,font:{size:10},boxWidth:12}},tooltip:tip},
+    scales:{x:{ticks:{color:tc,font:{size:8}},grid:{color:gc}},
+            y:{ticks:{color:tc,font:{size:9},callback:v=>v.toLocaleString('es-AR')},grid:{color:gc}}}}
+});
 </script>
 </body>
 </html>
